@@ -92,7 +92,7 @@ function combineDigits() {
 }
 
 
-// Function to calculate area 
+// Function to calculate area out of two parameters
 function calculateArea(wid, len) {
     if (arguments.length === 0) {
         // alert('Your parameters cannot be calculated.');
@@ -109,4 +109,74 @@ function calculateArea(wid, len) {
 
     // alert('Your parameters cannot be calculated.');
     return;
+}
+// console.log(calculateArea(7, 8)); --- output 56
+// console.log(calculateArea(7));    --- output 49
+
+
+// Function that gets all the divisors of a number and stores them into an array.
+function getDivisors() {
+    let numToGetDivisors = parseInt(prompt('Enter number to get an array of divisors'));
+    let divisorsArray = [];
+    let arrayIndex = 0;
+    let divisor = 1;
+    
+    while (divisor <= (numToGetDivisors / 2)) {
+        if (numToGetDivisors % divisor === 0) {
+            divisorsArray[arrayIndex] = divisor;
+            arrayIndex++;
+            divisor++;
+        } else if (numToGetDivisors % divisor !== 0) {
+            divisor++;
+        }
+    }
+    
+    alert('The resulting divisors are: \n' + divisorsArray);
+}
+
+
+// Function that checks if a number is a perfect number -- if the number is also a sum of all of its divisors (excluding itself) -- those are 6, 28, 496, 8128, 33 550 336
+
+function getPerfectNumber() {
+    let isPerfectNumber = parseInt(prompt('Enter number to find out if its perfect.'));
+    
+    function getPerfectDivisors(theNumber) {
+        let divisorsArrayPerf = [];
+        let arrayIndexPerf = 0;
+        let divisorPerf = 1;
+
+        while (divisorPerf <= (theNumber / 2)) {
+            if (theNumber % divisorPerf === 0) {
+                divisorsArrayPerf[arrayIndexPerf] = divisorPerf;
+                arrayIndexPerf++;
+                divisorPerf++;
+            } else {
+                divisorPerf++;
+            } 
+        }
+
+        return divisorsArrayPerf;
+    }
+    
+    let divArray = getPerfectDivisors(isPerfectNumber);
+    
+    function getSumOfDivisors(theArray) {
+        let i = 0;
+        let sum = 0;
+
+        while (i <= theArray.length - 1) {
+            sum = sum + theArray[i];
+            i++;
+        }
+
+        return sum;
+    }
+
+    let sumOfDivisors = getSumOfDivisors(divArray);
+
+    if (sumOfDivisors === isPerfectNumber) {
+        console.log(`Your number ${isPerfectNumber} is PERFECT! \nIts divisors are: ${divArray}\nAnd their sum is ${sumOfDivisors} too.`);
+    } else if (sumOfDivisors !== isPerfectNumber) {
+        console.log(`Your number ${isPerfectNumber} is NOT perfect! \nIts divisors are: ${divArray}\nAnd their sum is ${sumOfDivisors}, so the numbers dont match.`);
+    }
 }
