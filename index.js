@@ -196,14 +196,17 @@ function getRomanNumber() {
         romArr[0] = 'MM'
     } else if (numberToRoman >= 1000) {
         romArr[0] = 'M'
-    } else {
-        alert('The number exceeds 3999');
-        return
-    }    
+    }
 
     if (numberToRoman % 1000 >= 900) {
-        romArr[1] = 'CX';
-    } else if ((numberToRoman % 1000 < 900) && (numberToRoman % 1000 >= 500)) {
+        romArr[1] = 'CM';
+    } else if ((numberToRoman % 1000 < 900) && (numberToRoman % 1000 >= 800)) {
+        romArr[1] = 'DCCC';
+    } else if ((numberToRoman % 1000 < 800) && (numberToRoman % 1000 >= 700)) {
+        romArr[1] = 'DCC';
+    } else if ((numberToRoman % 1000 < 700) && (numberToRoman % 1000 >= 600)) {
+        romArr[1] = 'DC';
+    } else if ((numberToRoman % 1000 < 600) && (numberToRoman % 1000 >= 500)) {
         romArr[1] = 'D';
     } else if ((numberToRoman % 1000 < 500) && (numberToRoman % 1000 >= 400)) {
         romArr[1] = 'CD';
@@ -213,7 +216,49 @@ function getRomanNumber() {
         romArr[1] = 'CC';
     } else if ((numberToRoman % 1000 < 200) && (numberToRoman % 1000 >= 100)) {
         romArr[1] = 'C';
-    } 
+    }
+
+    if (numberToRoman % 100 >= 90) {
+        romArr[2] = 'XC';
+    } else if ((numberToRoman % 100 >= 80) && (numberToRoman % 100 < 90)) {
+        romArr[2] = 'LXXX';
+    } else if ((numberToRoman % 100 >= 70) && (numberToRoman % 100 < 80)) {
+        romArr[2] = 'LXX';
+    } else if ((numberToRoman % 100 >= 60) && (numberToRoman % 100 < 70)) {
+        romArr[2] = 'LX';
+    } else if ((numberToRoman % 100 >= 50) && (numberToRoman % 100 < 60)) {
+        romArr[2] = 'L';
+    } else if ((numberToRoman % 100 >= 40) && (numberToRoman % 100 < 50)) {
+        romArr[2] = 'XL';
+    } else if ((numberToRoman % 100 >= 30) && (numberToRoman % 100 < 40)) {
+        romArr[2] = 'XXX';
+    } else if ((numberToRoman % 100 >= 20) && (numberToRoman % 100 < 30)) {
+        romArr[2] = 'XX';
+    } else if ((numberToRoman % 100 >= 10) && (numberToRoman % 100 < 20)) {
+        romArr[2] = 'X';
+    }
+
+    if (numberToRoman % 10 >= 9) {
+        romArr[3] = 'IX';
+    } else if ((numberToRoman % 10 >= 8) && (numberToRoman % 10 < 9)) {
+        romArr[3] = 'VIII';
+    } else if ((numberToRoman % 10 >= 7) && (numberToRoman % 10 < 8)) {
+        romArr[3] = 'VII';
+    } else if ((numberToRoman % 10 >= 6) && (numberToRoman % 10 < 7)) {
+        romArr[3] = 'VI';
+    } else if ((numberToRoman % 10 >= 5) && (numberToRoman % 10 < 6)) {
+        romArr[3] = 'V';
+    } else if ((numberToRoman % 10 >= 4) && (numberToRoman % 10 < 5)) {
+        romArr[3] = 'IV';
+    } else if ((numberToRoman % 10 >= 3) && (numberToRoman % 10 < 4)) {
+        romArr[3] = 'III';
+    } else if ((numberToRoman % 10 >= 2) && (numberToRoman % 10 < 3)) {
+        romArr[3] = 'II';
+    } else if ((numberToRoman % 10 >= 1) && (numberToRoman % 10 < 2)) {
+        romArr[3] = 'I';
+    }
+
+    // man please make it a while ... and increment the index in romArr.
 
     alert(`The number ${numberToRoman} is ${romArr.join('')} in Roman Numerals.`);
 }
