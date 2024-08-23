@@ -175,8 +175,45 @@ function getPerfectNumber() {
     let sumOfDivisors = getSumOfDivisors(divArray);
 
     if (sumOfDivisors === isPerfectNumber) {
-        console.log(`Your number ${isPerfectNumber} is PERFECT! \nIts divisors are: ${divArray}\nAnd their sum is ${sumOfDivisors} too.`);
+        alert(`Your number ${isPerfectNumber} is PERFECT! \nIts divisors are: ${divArray}\nAnd their sum is ${sumOfDivisors} too.`);
     } else if (sumOfDivisors !== isPerfectNumber) {
-        console.log(`Your number ${isPerfectNumber} is NOT perfect! \nIts divisors are: ${divArray}\nAnd their sum is ${sumOfDivisors}, so the numbers dont match.`);
+        alert(`Your number ${isPerfectNumber} is NOT perfect! \nIts divisors are: ${divArray}\nAnd their sum is ${sumOfDivisors}, so the numbers dont match.`);
     }
+}
+
+
+// Write Roman Numerals convertor (max 3999)
+
+function getRomanNumber() {
+    let numberToRoman = prompt('Enter the number to be converted to Roman.\nMaximum 3999');
+    let numToArr = numberToRoman.split('');
+    let romArr = [];
+    let activeNumber;
+
+    if (numberToRoman >= 3000) {
+        romArr[0] = 'MMM'
+    } else if (numberToRoman >= 2000) {
+        romArr[0] = 'MM'
+    } else if (numberToRoman >= 1000) {
+        romArr[0] = 'M'
+    } else {
+        alert('The number exceeds 3999');
+        return
+    }    
+
+    if (numberToRoman % 1000 >= 900) {
+        romArr[1] = 'CX';
+    } else if ((numberToRoman % 1000 < 900) && (numberToRoman % 1000 >= 500)) {
+        romArr[1] = 'D';
+    } else if ((numberToRoman % 1000 < 500) && (numberToRoman % 1000 >= 400)) {
+        romArr[1] = 'CD';
+    } else if ((numberToRoman % 1000 < 400) && (numberToRoman % 1000 >= 300)) {
+        romArr[1] = 'CCC';
+    } else if ((numberToRoman % 1000 < 300) && (numberToRoman % 1000 >= 200)) {
+        romArr[1] = 'CC';
+    } else if ((numberToRoman % 1000 < 200) && (numberToRoman % 1000 >= 100)) {
+        romArr[1] = 'C';
+    } 
+
+    alert(`The number ${numberToRoman} is ${romArr.join('')} in Roman Numerals.`);
 }
