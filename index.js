@@ -262,3 +262,23 @@ function getRomanNumber() {
 
     alert(`The number ${numberToRoman} is ${romArr.join('')} in Roman Numerals.`);
 }
+
+
+
+function getTimeUnit() {
+    const hours = parseInt(prompt('Write hours'));
+    const minutes = parseInt(prompt('Write minutes'));
+    const seconds = parseInt(prompt('Write seconds'));
+    const unit = prompt('Enter a unit. Either hours (h or hr), minutes (m or min), or secons (s or sec)')
+    let totalHours = (hours + (minutes / 60) + (seconds / 3600)).toFixed(2);
+    let totalMinutes = ((hours * 60) + minutes + (seconds / 60)).toFixed(2);
+    let totalSeconds = (hours * 3600) + (minutes * 60) + seconds;;
+
+    if ((unit.toUpperCase() == "H") || (unit.toUpperCase() == "HR")) {
+        alert(`You wanted the time in hours, and it makes ${totalHours} hours.`);
+    } else if ((unit.toUpperCase() == "M") || (unit.toUpperCase() == "MIN")) {
+        alert(`You wanted the time in minutes, and it makes ${totalMinutes} minutes.`);
+    } else if ((unit.toUpperCase() == "S") || (unit.toUpperCase() == "SEC")) {
+        alert(`You wanted the time in seconds, and it makes ${totalSeconds} seconds.`);
+    }
+}
