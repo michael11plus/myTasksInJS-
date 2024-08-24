@@ -258,13 +258,11 @@ function getRomanNumber() {
         romArr[3] = 'I';
     }
 
-    // man please make it a while ... and increment the index in romArr.
-
     alert(`The number ${numberToRoman} is ${romArr.join('')} in Roman Numerals.`);
 }
 
 
-
+// Write a function that takes hours, minutes and seconds and displays the time in particular units.
 function getTimeUnit() {
     const hours = parseInt(prompt('Write hours'));
     const minutes = parseInt(prompt('Write minutes'));
@@ -281,4 +279,32 @@ function getTimeUnit() {
     } else if ((unit.toUpperCase() == "S") || (unit.toUpperCase() == "SEC")) {
         alert(`You wanted the time in seconds, and it makes ${totalSeconds} seconds.`);
     }
+}
+
+// Write a function that takes h, min and sec and displays the time in hh:mm:ss format
+// Decided to make it an arrow function and with arguments, tested by console.log
+const getTimeInFormat = (hr, min, sec) => {
+    const timeArray = [];
+    
+    
+    if (hr > 24) {
+        return "You entered nonsense time (hr)";
+    } else if (min > 59) {
+        return "You entered nonsense time (min)";
+    } else if (sec > 59) {
+        return "You entered nonsense time (sec)";
+    } else {
+        timeArray[0] = hr.toString().padStart(2, '0');
+        timeArray[1] = min.toString().padStart(2, '0');
+        timeArray[2] = sec.toString().padStart(2, '0');
+
+        return timeArray.join(':');
+    }
+}
+
+const testTimeInFormat = () => {
+    console.log(getTimeInFormat(2, 15, 17) + ' is the time put in by the parameters');
+    console.log(getTimeInFormat(0, 7, 41) + ' is the time put in by the parameters');
+    console.log(getTimeInFormat(2, 15, 105) + ' is the time put in by the parameters');
+    console.log(getTimeInFormat(6, 59, 59) + ' is the time put in by the parameters');
 }
