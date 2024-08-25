@@ -135,9 +135,10 @@ function getDivisors() {
 }
 
 
-// Function that checks if a number is a perfect number -- if the number is also a sum of all of its divisors (excluding itself) -- those are 6, 28, 496, 8128, 33 550 336
+// 05 Function that checks if a number is a perfect number -- if the number is also a sum of all of its divisors (excluding itself) -- those are 6, 28, 496, 8128, 33 550 336
 
 function getPerfectNumber() {
+
     let isPerfectNumber = parseInt(prompt('Enter number to find out if its perfect.'));
     
     function getPerfectDivisors(theNumber) {
@@ -284,7 +285,8 @@ function getTimeUnit() {
 // Write a function that takes h, min and sec and displays the time in hh:mm:ss format
 // Decided to make it an arrow function and with arguments, tested by console.log
 const getTimeInFormat = (hr, min, sec) => {
-    const timeArray = [];
+    const timeArray = 0;
+    
     
     
     if (hr > 24) {
@@ -305,6 +307,27 @@ const getTimeInFormat = (hr, min, sec) => {
 const testTimeInFormat = () => {
     console.log(getTimeInFormat(2, 15, 17) + ' is the time put in by the parameters');
     console.log(getTimeInFormat(0, 7, 41) + ' is the time put in by the parameters');
-    console.log(getTimeInFormat(2, 15, 105) + ' is the time put in by the parameters');
-    console.log(getTimeInFormat(6, 59, 59) + ' is the time put in by the parameters');
+//  console.log(getTimeInFormat(2, 15, 105) + ' is the time put in by the parameters');
+//  console.log(getTimeInFormat(6, 59, 59) + ' is the time put in by the parameters');
 }
+
+// Write a function that takes number of seconds converts them into hours, minutes and seconds, and returns the result in the format 'hh:mm:ss'
+
+const secondsToTimeInFormat = (valueInSec) => {
+    const myTimeArray = [];
+    let secToHours = ((valueInSec / 3600) - (valueInSec % 3600) / 3600).toString().padStart(2, '0');
+    let secToMins = ((valueInSec - (secToHours * 3600)) / 60).toFixed(0).toString().padStart(2, '0');
+
+    myTimeArray[0] = secToHours
+    myTimeArray[1] = secToMins;
+    myTimeArray[2] = 57;
+    return myTimeArray.join(':');
+}
+
+const testSecToTime = () => {
+    console.log(secondsToTimeInFormat(10900));  
+    console.log(secondsToTimeInFormat(21600));
+    console.log(secondsToTimeInFormat(18000));
+}
+
+
